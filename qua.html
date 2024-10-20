@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chọn quà tặng</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <script type="text/javascript">
+        (function() {
+            emailjs.init("AJNb1ECRUXsuW-Jct"); // Thay YOUR_USER_ID bằng User ID từ EmailJS
+        })();
+    
+        function sendGiftEmail(giftName) {
+            const templateParams = {
+                to_name: 'Kim Tuyền',
+                from_name: 'Kim Tuyền',
+                message: `Bạn đã chọn phần quà: ${giftName}`
+            };
+    
+            // Gửi email thông qua EmailJS
+            emailjs.send('service_dudtak8', 'template_jtcigep', templateParams)
+            .then(function(response) {
+                
+            }, function(error) {
+                console.log('Thất bại...', error);
+            });
+            document.getElementById('thankYouMessage').textContent = `Cảm ơn Hà đã chọn ${giftName}! 💖`;
+        }
+    </script>
+    <section id="qua">
+        <h2>Chọn món quà yêu thương</h2>
+        <div class="gifts">
+            <button onclick="sendGiftEmail('Nhành hoa')">🌸 Hoa</button>
+            <button onclick="sendGiftEmail('Cốc trà sữa')">🥤 Trà sữa</button>
+            <button onclick="sendGiftEmail('Buổi xem phim')">🎬 Buổi xem phim</button>
+            <button onclick="sendGiftEmail('Buổi đi chơi')">🎡 Buổi đi chơi</button>
+            <button onclick="sendGiftEmail('Không thèm ạ')">🚫 Không thèm!</button>
+        </div>
+        <p id="thankYouMessage"></p>
+    </section>
+    <footer>
+        <p>20-10 vui vẻ!</p>
+    </footer>
+
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+    </script>
+    <script type="text/javascript">
+    (function(){
+    emailjs.init({
+        publicKey: "AJNb1ECRUXsuW-Jct",
+    });
+    })();
+    </script>
+    
+
+</body>
+</html>
